@@ -1,16 +1,33 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./GeneralQuestion.css";
+import { useParams } from "react-router-dom";
 
 function GeneralQuestion() {
-  const url = "https://opentdb.com/api.php?amount=10&type=multiple";
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [quizComplete, setQuizComplete] = useState(false);
+  let { category } = useParams();
 
   const fetchingData = async () => {
+    let url;
     try {
+      switch (category) {
+        case "general-knowledge":
+          url = "https://opentdb.com/api.php?amount=10&type=multiple";
+          break;
+        case "science-computers":
+          url =
+            "https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple";
+          break;
+        case "entertainment":
+          url =
+            "https://opentdb.com/api.php?amount=40&category=32&type=multiple";
+          break;
+        default:
+          break;
+      }
       const response = await fetch(url);
       const result = await response.json();
       console.log(result);

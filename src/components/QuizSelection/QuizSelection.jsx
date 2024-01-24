@@ -5,10 +5,9 @@ import { useNavigate } from "react-router-dom";
 export const QuizSelection = () => {
   const [selectedCatagory, setCatagory] = useState("");
   const navigate = useNavigate();
-  
-  const handleClick = () => {
-    navigate(`/quiz/${selectedCatagory}`)
 
+  const handleClick = () => {
+    navigate(`/quiz/${selectedCatagory}`);
   };
 
   return (
@@ -43,7 +42,6 @@ export const QuizSelection = () => {
           >
             Entertainment
           </div>
-         
         </div>
       </div>
 
