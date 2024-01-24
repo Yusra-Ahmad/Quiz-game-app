@@ -9,7 +9,6 @@ function GeneralQuestion() {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [quizComplete, setQuizComplete] = useState(false);
 
-  const entities = { "&#039;": "'", "&quot;": '"', "&ndash;": "-" };
   const fetchingData = async () => {
     try {
       const response = await fetch(url);
@@ -19,6 +18,11 @@ function GeneralQuestion() {
     } catch (error) {
       console.error(error.message);
     }
+  };
+
+  const decodeHtmlEntities = (html) => {
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    return doc.body.textContent;
   };
 
   const shuffleAnswers = (question) => {
@@ -63,21 +67,12 @@ function GeneralQuestion() {
         </div>
       ) : (
         <div>
-          <h3>
-            {currentQuestion.question.replace(
-              /&#?\w+;/,
-              (match) => entities[match]
-            )}
-          </h3>
+          <h3>{decodeHtmlEntities(currentQuestion.question)}</h3>
           <ul>
             {shuffledAnswers.map((answer, index) => (
               <li key={index}>
-                <button
-                  onClick={() => handleAnswerClick(answer)}
-                  //   className={selectedAnswer === answer ? "selected" : ""}
-                  //   disabled={selectedAnswer !== null}
-                >
-                  {answer.replace(/&#?\w+;/, (match) => entities[match])}
+                <button onClick={() => handleAnswerClick(answer)}>
+                  {decodeHtmlEntities(answer)}
                 </button>
               </li>
             ))}
