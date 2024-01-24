@@ -1,65 +1,61 @@
 import { useState } from "react";
 import "./QuizSelection.css";
 import { useNavigate } from "react-router-dom";
+import {GiThink } from "react-icons/gi";
+import { FcAcceptDatabase } from "react-icons/fc";
+import { TbWorldHeart } from "react-icons/tb";
+import { FaLaptopCode } from "react-icons/fa";
+import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
+import { FaFaceGrinStars } from "react-icons/fa6";
 
 export const QuizSelection = () => {
-  const [selectedCatagory, setCatagory] = useState("");
   const navigate = useNavigate();
 
-  const handleClick = () => {
+
+  const handleClick = (selectedCatagory) => {
+
     navigate(`/quiz/${selectedCatagory}`);
   };
 
   return (
     <>
       <div>
-        <h2 style={{ fontSize: "50px", marginBottom: "37px" }}>
-          WELCOME TO QUIZ GAME
+        <h2 style={{ fontSize: "100px", marginBottom: "37px" }}>
+            <GiThink />
+          WELCOME TO QUIZ GAME 
+          <GiPerspectiveDiceSixFacesRandom />
         </h2>
-        <h2 style={{ fontSize: "7em" }}>Quiz Selection</h2>
+        <h2 style={{ fontSize: "6em", textAlign: "center" }}>
+
+       
+
+          
+          Quiz Selection  <FcAcceptDatabase  style={{fontSize:"5rem"}}/>
+        </h2> 
         <div style={{ fontSize: "30px" }}>
           <div
-            className={`category ${
-              selectedCatagory === "general-knowledge" ? "active" : ""
-            }`}
-            onClick={() => setCatagory("general-knowledge")}
+            className="category"
+            onClick={()=>handleClick("general-knowledge")}
           >
-            General Knowledge
+            General Knowledge <TbWorldHeart />
           </div>
           <div
-            className={`category ${
-              selectedCatagory === "science-computers" ? "active" : ""
-            }`}
-            onClick={() => setCatagory("science-computers")}
+            className="category"
+            onClick={()=>handleClick("science-computers")}
           >
-            Science Computers
+            Science Computers <FaLaptopCode />
           </div>
           <div
-            className={`category ${
-              selectedCatagory === "entertainment" ? "active" : ""
-            }`}
-            onClick={() => setCatagory("entertainment")}
+            className="category"
+            onClick={()=>handleClick("entertainment")}
           >
             Entertainment
+            <FaFaceGrinStars />
           </div>
         </div>
       </div>
 
-      <button
-        className="btn"
-        onClick={handleClick}
-        style={{
-          padding: "12px 40px",
-          fontFamily: "monospace",
-          fontSize: "1rem",
-          borderRadius: "1.3rem",
-          border: "solid purple",
-          boxShadow: "-4px 3px 4px  purple",
-          backgroundColor: "pink",
-        }}
-      >
-        Continue
-      </button>
+      
     </>
   );
 };

@@ -1,4 +1,4 @@
-@import "https://unpkg.com/open-props";
+ @import "https://unpkg.com/open-props"; 
 
 /* .category {
   border: 3px solid;
@@ -24,7 +24,8 @@
 
 
 .category {
-    margin-top: 35px;
+  text-align: center;
+    margin-top: 40px;
     margin-bottom: 20px;
     font-family: var(--font-sans);
     font-weight: var(--font-weight-6);
@@ -37,18 +38,26 @@
     transition: transform 0.1s;
     position: relative;
     cursor: pointer;
+    border-radius: 32px;
+  border: solid rgb(6, 7, 71);
+
+
   }
   
   .category:hover,.active {
     --y: -10;
     --scale: 1.1;
     --border-scale: 1;
+    color: rgb(130, 47, 112);
+    border: solid rgb(144, 36, 81);
+
   }
   
   .category:active {
     --y: 5%;
     --scale: 0.9;
-    --border-scale: 0.9, 0.8;
+  --border-scale: 0.9, 0.8;
+  background-color: rgb(201, 194, 203);
   }
   
   .category:before {
@@ -58,6 +67,8 @@
     border: var(--size-2) solid var(--gray-0);
     transform: scale(var(--border-scale, 0));
     transition: transform 0.125s;
+    border-radius: 32px;
+    border:solid 4px rgb(240, 209, 245);
     
     --angle-one: 105deg;
     --angle-two: 290deg;
