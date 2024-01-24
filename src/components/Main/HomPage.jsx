@@ -11,12 +11,12 @@ export const HomePage = () => {
       <h2>APP</h2>
       {/* <button className="start">Get Started</button> */}
       <div class="sp">
-        <button class="sparkle-button">
+        <button onClick={handleClick} className="sparkle-button">
           <span class="spark"></span>
 
-          <span class="backdrop"></span>
+          <span className="backdrop"></span>
           <svg
-            class="sparkle"
+            className="sparkle"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ export const HomePage = () => {
               stroke-linejoin="round"
             ></path>
           </svg>
-          <span class="text" onClick={handleClick}>
+          <span className="text" >
             Get Started
           </span>
         </button>

@@ -7,11 +7,11 @@ import { Route, Routes } from "react-router-dom";
 function App() {
   return (
     <>
-      <GeneralQuestion />
+   
       <Routes>
         <Route index element={<HomePage />}></Route>
         <Route path="quiz-selection" element={<QuizSelection />}></Route>
-        <Route path="quiz/:category" element={<QuizSelection />}></Route>
+        <Route path="quiz/:category" element={< GeneralQuestion/>}></Route>
       </Routes>
     </>
   );

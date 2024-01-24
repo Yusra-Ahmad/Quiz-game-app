@@ -1,3 +1,150 @@
+@import "https://unpkg.com/open-props";
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
+.questionanswer {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+}
+h3 {
+  border-radius: 150px;
+  border-width: 4px;
+  border-style: solid;
+  border-image: linear-gradient(to right, rgb(131, 219, 246), rgb(110, 32, 149)) 1;
+  margin: auto;
+  padding: 180px 20px;
+font-family:'Playfair Display';
+font-size: 25px;
+  
+}
+/* h3::before{
+  content: "";
+  position: absolute;
+  inset: calc(var(--size-3) * -1);
+  border: var(--size-2) solid var(--gray-0);
+  transform: scale(var(--border-scale, 0));
+  transition: transform 0.125s;
+  --angle-one: 105deg;
+  --angle-two: 290deg;
+  --spread-one: 30deg;
+  --spread-two: 40deg;
+  --start-one: calc(var(--angle-one) - (var(--spread-one) * 0.5));
+  --start-two: calc(var(--angle-two) - (var(--spread-two) * 0.5));
+  --end-one: calc(var(--angle-one) + (var(--spread-one) * 0.5));
+  --end-two: calc(var(--angle-two) + (var(--spread-two) * 0.5));
+
+  mask: conic-gradient(
+    transparent 0 var(--start-one),
+    white var(--start-one) var(--end-one),
+    transparent var(--end-one) var(--start-two),
+    white var(--start-two) var(--end-two),
+    transparent var(--end-two)
+  );
+  
+  z-index: -1;
+} */
 ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   list-style: none;
 }
+li > button {
+  background: transparent;
+  border: 2px solid rgb(193, 189, 189);
+  border-radius: 20px;
+padding: 15px;
+color: aliceblue;
+font-family:'Playfair Display';
+}
+li>button:hover{
+  border-radius: 150px;
+  border-width: 4px;
+  border-style: solid;
+  border-image: linear-gradient(to right, rgb(214, 251, 24), rgb(23, 180, 242)) 1;
+  margin: auto;
+ padding: 15px;
+}
+
+/* button {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-6);
+  font-size: var(--font-size-5);
+  color: var(--gray-8);
+  background: var(--gray-0);
+  border: 0;
+  padding: var(--size-4) var(--size-8);
+  transform: translateY(calc(var(--y, 0) * 1%)) scale(var(--scale));
+  transition: transform 0.1s;
+  position: relative;
+}
+
+button:hover {
+  --y: -10;
+  --scale: 1.1;
+  --border-scale: 1;
+}
+
+
+button:active {
+  --y: 5%;
+  --scale: 0.9;
+  --border-scale: 0.9, 0.8;
+}
+
+button:before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--size-3) * -1);
+  border: var(--size-2) solid var(--gray-0);
+  transform: scale(var(--border-scale, 0));
+  transition: transform 0.125s;
+  
+
+  --start-one: calc(var(--angle-one) - (var(--spread-one) * 0.5));
+  --start-two: calc(var(--angle-two) - (var(--spread-two) * 0.5));
+  --end-one: calc(var(--angle-one) + (var(--spread-one) * 0.5));
+  --end-two: calc(var(--angle-two) + (var(--spread-two) * 0.5));
+  
+  mask: conic-gradient(
+    transparent 0 var(--start-one),
+    white var(--start-one) var(--end-one),
+    transparent var(--end-one) var(--start-two),
+    white var(--start-two) var(--end-two),
+    transparent var(--end-two)
+  );
+  
+  z-index: -1;
+}
+button:active {
+  --y: 5%;
+  --scale: 0.9;
+  --border-scale: 0.9, 0.8;
+}
+
+button:before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--size-3) * -1);
+  border: var(--size-2) solid var(--gray-0);
+  transform: scale(var(--border-scale, 0));
+  transition: transform 0.125s;
+  
+  --angle-one: 105deg;
+  --angle-two: 290deg;
+  --spread-one: 30deg;
+  --spread-two: 40deg;
+  --start-one: calc(var(--angle-one) - (var(--spread-one) * 0.5));
+  --start-two: calc(var(--angle-two) - (var(--spread-two) * 0.5));
+  --end-one: calc(var(--angle-one) + (var(--spread-one) * 0.5));
+  --end-two: calc(var(--angle-two) + (var(--spread-two) * 0.5));
+  
+  mask: conic-gradient(
+    transparent 0 var(--start-one),
+    white var(--start-one) var(--end-one),
+    transparent var(--end-one) var(--start-two),
+    white var(--start-two) var(--end-two),
+    transparent var(--end-two)
+  );
+  
+  z-index: -1;
+} */
