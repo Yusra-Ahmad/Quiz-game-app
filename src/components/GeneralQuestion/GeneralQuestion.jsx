@@ -83,7 +83,7 @@ function GeneralQuestion() {
           <button>Play again</button>
         </div>
       ) : (
-        <div>
+        <div className="questionanswer">
           <h3>{decodeHtmlEntities(currentQuestion.question)}</h3>
           <ul>
             {shuffledAnswers.map((answer, index) => (
