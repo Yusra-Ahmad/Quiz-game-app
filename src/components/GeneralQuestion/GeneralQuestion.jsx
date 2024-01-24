@@ -1,17 +1,33 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./GeneralQuestion.css";
+import { useParams } from "react-router-dom";
 
 function GeneralQuestion() {
-  const url = "https://opentdb.com/api.php?amount=10&type=multiple";
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [quizComplete, setQuizComplete] = useState(false);
+  let { category } = useParams();
 
-  const entities = { "&#039;": "'", "&quot;": '"', "&ndash;": "-" };
   const fetchingData = async () => {
+    let url;
     try {
+      switch (category) {
+        case "general-knowledge":
+          url = "https://opentdb.com/api.php?amount=10&type=multiple";
+          break;
+        case "science-computers":
+          url =
+            "https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple";
+          break;
+        case "entertainment":
+          url =
+            "https://opentdb.com/api.php?amount=40&category=32&type=multiple";
+          break;
+        default:
+          break;
+      }
       const response = await fetch(url);
       const result = await response.json();
       console.log(result);
@@ -19,6 +35,11 @@ function GeneralQuestion() {
     } catch (error) {
       console.error(error.message);
     }
+  };
+
+  const decodeHtmlEntities = (html) => {
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    return doc.body.textContent;
   };
 
   const shuffleAnswers = (question) => {
@@ -63,21 +84,12 @@ function GeneralQuestion() {
         </div>
       ) : (
         <div>
-          <h3>
-            {currentQuestion.question.replace(
-              /&#?\w+;/,
-              (match) => entities[match]
-            )}
-          </h3>
+          <h3>{decodeHtmlEntities(currentQuestion.question)}</h3>
           <ul>
             {shuffledAnswers.map((answer, index) => (
               <li key={index}>
-                <button
-                  onClick={() => handleAnswerClick(answer)}
-                  //   className={selectedAnswer === answer ? "selected" : ""}
-                  //   disabled={selectedAnswer !== null}
-                >
-                  {answer.replace(/&#?\w+;/, (match) => entities[match])}
+                <button onClick={() => handleAnswerClick(answer)}>
+                  {decodeHtmlEntities(answer)}
                 </button>
               </li>
             ))}

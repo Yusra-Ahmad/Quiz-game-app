@@ -11,7 +11,9 @@ import { FaFaceGrinStars } from "react-icons/fa6";
 export const QuizSelection = () => {
   const navigate = useNavigate();
 
+
   const handleClick = (selectedCatagory) => {
+
     navigate(`/quiz/${selectedCatagory}`);
   };
 
