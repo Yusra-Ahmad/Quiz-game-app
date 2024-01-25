@@ -1,28 +1,37 @@
 @import "https://unpkg.com/open-props";
-@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Playfair+Display:ital,wght@0,500;1,500&display=swap");
 .questionanswer {
   display: flex;
   text-align: center;
   justify-content: space-between;
 }
-h3 {
-  border-radius: 150px;
+.question {
+  /* border-radius: 150px;
   border-width: 4px;
-  border-style: solid;
-  border-image: linear-gradient(to right, rgb(131, 219, 246), rgb(110, 32, 149)) 1;
+  border-style: solid; */
+  /* border-image: linear-gradient(to right, rgb(131, 219, 246), rgb(110, 32, 149))1; */
   margin: auto;
   padding: 180px 20px;
-font-family:'Playfair Display';
-font-size: 25px;
-  
+  font-family: "Playfair Display";
+  font-size: 25px;
+  transform: translateY(calc(var(--y, 0) * 1%)) scale(var(--scale));
+  transition: transform 0.1s;
+
+  --y: -10;
+  --scale: 1.1;
+  --border-scale: 1;
+  width: 45rem;
 }
-/* h3::before{
+.question::before {
   content: "";
   position: absolute;
   inset: calc(var(--size-3) * -1);
   border: var(--size-2) solid var(--gray-0);
   transform: scale(var(--border-scale, 0));
   transition: transform 0.125s;
+  border-radius: 120px;
+  border: solid 8px  rgb(131, 219, 246);
+
   --angle-one: 105deg;
   --angle-two: 290deg;
   --spread-one: 30deg;
@@ -39,30 +48,140 @@ font-size: 25px;
     white var(--start-two) var(--end-two),
     transparent var(--end-two)
   );
-  
+
   z-index: -1;
-} */
+}
+
+
+.question::after {
+  margin-right: -61px;
+    margin-bottom: -45px;
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: var(--size-2) solid var(--gray-0);
+    transform: scale(var(--border-scale, 0));
+    transition: transform 0.125s;
+    border-radius: 120px;
+    border: solid 8px rgb(0 0 0);
+    --angle-one: 0deg;
+    --angle-two: 210deg;
+    --spread-one: 207deg;
+    --spread-two: 135deg;
+  --start-one: calc(var(--angle-one) - (var(--spread-one) * 0.5));
+  --start-two: calc(var(--angle-two) - (var(--spread-two) * 0.5));
+  --end-one: calc(var(--angle-one) + (var(--spread-one) * 0.5));
+  --end-two: calc(var(--angle-two) + (var(--spread-two) * 0.5));
+
+  mask: conic-gradient(
+    transparent 0 var(--start-one),
+    white var(--start-one) var(--end-one),
+    transparent var(--end-one) var(--start-two),
+    white var(--start-two) var(--end-two),
+    transparent var(--end-two)
+  );
+
+  z-index: -1;
+}
+
 ul {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   list-style: none;
+  margin-left: 15rem;
 }
+
+
+li{
+  transform: translateY(calc(var(--y, 0) * 1%)) scale(var(--scale));
+  transition: transform 0.1s;
+
+  --y: -10;
+  --scale: 1.1;
+  --border-scale: 1;
+  width: 15rem;
+  margin: 3rem;
+  padding: 8px;
+}
+
+li::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--size-3) * -1);
+  border: var(--size-2) solid var(--gray-0);
+  transform: scale(var(--border-scale, 0));
+  transition: transform 0.125s;
+  border-radius: 80px;
+  border: solid 5px  rgb(131, 219, 246);
+
+  --angle-one: 105deg;
+  --angle-two: 290deg;
+  --spread-one: 30deg;
+  --spread-two: 40deg;
+  --start-one: calc(var(--angle-one) - (var(--spread-one) * 0.5));
+  --start-two: calc(var(--angle-two) - (var(--spread-two) * 0.5));
+  --end-one: calc(var(--angle-one) + (var(--spread-one) * 0.5));
+  --end-two: calc(var(--angle-two) + (var(--spread-two) * 0.5));
+
+  mask: conic-gradient(
+    transparent 0 var(--start-one),
+    white var(--start-one) var(--end-one),
+    transparent var(--end-one) var(--start-two),
+    white var(--start-two) var(--end-two),
+    transparent var(--end-two)
+  );
+
+  z-index: -1;
+}
+
+
+li::after {    margin-right: -24px;
+  margin-bottom: -24px;
+  content: "";
+  position: absolute;
+  inset: -5px;
+    border: var(--size-2) solid var(--gray-0);
+    transform: scale(var(--border-scale, 0));
+    transition: transform 0.125s;
+    border-radius: 80px;
+    border: solid 5px rgb(0 0 0);
+    --angle-one: 111deg;
+    --angle-two: 12deg;
+    --spread-one: 337deg;
+    --spread-two: 543deg;
+  --start-one: calc(var(--angle-one) - (var(--spread-one) * 0.5));
+  --start-two: calc(var(--angle-two) - (var(--spread-two) * 0.5));
+  --end-one: calc(var(--angle-one) + (var(--spread-one) * 0.5));
+  --end-two: calc(var(--angle-two) + (var(--spread-two) * 0.5));
+
+  mask: conic-gradient(
+    transparent 0 var(--start-one),
+    white var(--start-one) var(--end-one),
+    transparent var(--end-one) var(--start-two),
+    white var(--start-two) var(--end-two),
+    transparent var(--end-two)
+  );
+
+  z-index: -1;
+}
+
 li > button {
   background: transparent;
   border: 2px solid rgb(193, 189, 189);
   border-radius: 20px;
-padding: 15px;
-color: aliceblue;
-font-family:'Playfair Display';
+  padding: 15px;
+  color: aliceblue;
+  font-family: "Playfair Display";
 }
-li>button:hover{
+li > button:hover {
   border-radius: 150px;
   border-width: 4px;
   border-style: solid;
-  border-image: linear-gradient(to right, rgb(214, 251, 24), rgb(23, 180, 242)) 1;
+  border-image: linear-gradient(to right, rgb(214, 251, 24), rgb(23, 180, 242))
+    1;
   margin: auto;
- padding: 15px;
+  padding: 15px;
 }
 
 /* button {
