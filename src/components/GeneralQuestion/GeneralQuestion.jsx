@@ -1,15 +1,12 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./GeneralQuestion.css";
 import { useParams } from "react-router-dom";
+import { useAnswerContext } from "../context/AnswerContext";
+import{ResultPage} from"../Result/ResultPage"
 
 function GeneralQuestion() {
-  const [questions, setQuestions] = useState([]);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [quizComplete, setQuizComplete] = useState(false);
+  const obj = useAnswerContext();
   let { category } = useParams();
-
   const fetchingData = async () => {
     let url;
     try {
@@ -20,7 +17,7 @@ function GeneralQuestion() {
           break;
         case "science-computers":
           url =
-            "https://the-trivia-api.com/v2/questions?limit=10&categories=science&type=text_choice";
+            "https://the-trivia-api.com/v2/questions?limit=10&categories=science&type=text_choice&difficulty=easy";
           break;
         case "entertainment":
           url =
@@ -32,7 +29,7 @@ function GeneralQuestion() {
       const response = await fetch(url);
       const result = await response.json();
       console.log(result);
-      setQuestions(
+      obj.setQuestions(
         result.map((item) => {
           return {
             incorrect_answers: item.incorrectAnswers,
@@ -45,12 +42,10 @@ function GeneralQuestion() {
       console.error(error.message);
     }
   };
-
   const decodeHtmlEntities = (html) => {
     const doc = new DOMParser().parseFromString(html, "text/html");
     return doc.body.textContent;
   };
-
   const shuffleAnswers = (question) => {
     const shuffledAnswers = [
       ...question.incorrect_answers,
@@ -58,48 +53,42 @@ function GeneralQuestion() {
     ];
     return shuffledAnswers.sort(() => Math.random() - 0.5);
   };
-
-  const handleAnswerClick = (answer) => {
-    setSelectedAnswer(answer);
-    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-    setSelectedAnswer(null);
-
-    if (answer === questions[currentQuestionIndex].correct_answer) {
-      setCorrectAnswers((prevCount) => prevCount + 1);
-    }
-  };
-
+  // const resetQuiz = () => {
+  //   obj.setQuestions([]);
+  //   obj.setCurrentQuestionIndex(0);
+  //   obj.setCorrectAnswers(0);
+  // };
   useEffect(() => {
     fetchingData();
-  }, []);
-
-  if (questions.length === 0) {
+  },[category]);
+  if (obj.questions.length === 0) {
     return <div>Loading...</div>;
   }
-
-  const isQuizComplete = currentQuestionIndex === questions.length - 1;
-
-  const currentQuestion = questions[currentQuestionIndex];
+  const isQuizComplete = obj.currentQuestionIndex === obj.questions.length - 1;
+  const currentQuestion = obj.questions[obj.currentQuestionIndex];
   const shuffledAnswers = shuffleAnswers(currentQuestion);
-
+  const handleQuizCompletion = () => {
+    obj.resetQuiz(); 
+  };
   return (
     <>
       {isQuizComplete ? (
-        <div>
-          <h4>Quiz Complete!</h4>
-          <p>Correct Answers: {correctAnswers}</p>
-          <button>Back to menu</button>
-          <button>Play again</button>
-        </div>
+        <>
+        <ResultPage/>
+ {/* { handleQuizCompletion()} */}
+        </>
+       
       ) : (
         <div className="questionanswer">
           <div className="question">
-            {decodeHtmlEntities(currentQuestion.question)}
+    {decodeHtmlEntities(currentQuestion.question)}
           </div>
           <ul>
             {shuffledAnswers.map((answer, index) => (
-              <li key={index} onClick={() => handleAnswerClick(answer)}>
-                {decodeHtmlEntities(answer)}
+              <li key={index}
+          onClick={() => obj.handleAnswerClick(answer)}>
+                  {decodeHtmlEntities(answer)}
+               
               </li>
             ))}
           </ul>
@@ -108,5 +97,4 @@ function GeneralQuestion() {
     </>
   );
 }
-
 export default GeneralQuestion;
