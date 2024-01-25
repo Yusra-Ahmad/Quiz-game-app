@@ -17,7 +17,7 @@ Dive into questions from different categories and challenge yourself with:
 
 Access the deployed website instantly! No installation required. Click on the image below to open the website:
 
-[![Quiz Game App](quiz-app-img.png)](https://your-quiz-game-website.com)
+[![Quiz Game App](quiz-app-img.png)](https://quiz-game-umber.vercel.app/)
 
 ## Collaboration 👥
 
