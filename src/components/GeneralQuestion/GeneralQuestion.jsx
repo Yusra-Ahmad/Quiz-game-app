@@ -1,42 +1,37 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./GeneralQuestion.css";
 import { useParams } from "react-router-dom";
+import { useAnswerContext } from "../context/AnswerContext";
 
 function GeneralQuestion() {
-  const [questions, setQuestions] = useState([]);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [quizComplete, setQuizComplete] = useState(false);
+  const obj = useAnswerContext();
   let { category } = useParams();
-
+  let url = "https://the-trivia-api.com/v2/questions";
   const fetchingData = async () => {
-    let url;
     try {
-      switch (category) {
-        case "general-knowledge":
-          url = "https://opentdb.com/api.php?amount=10&type=multiple";
-          break;
-        case "science-computers":
-          url =
-            "https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple";
-          break;
-        case "entertainment":
-          url =
-            "https://opentdb.com/api.php?amount=40&category=32&type=multiple";
-          break;
-        default:
-          break;
-      }
+      // switch (category) {
+      //   case "general-knowledge":
+      //     url = "https://opentdb.com/api.php?amount=10&type=multiple";
+      //     break;
+      //   case "science-computers":
+      //     url =
+      //       "https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple";
+      //     break;
+      //   case "entertainment":
+      //     url =
+      //       "https://opentdb.com/api.php?amount=40&category=32&type=multiple";
+      //     break;
+      //   default:
+      //     break;
+      // }
       const response = await fetch(url);
       const result = await response.json();
       console.log(result);
-      setQuestions(result.results);
+      obj.setQuestions(result.results);
     } catch (error) {
       console.error(error.message);
     }
   };
-
   const decodeHtmlEntities = (html) => {
     const doc = new DOMParser().parseFromString(html, "text/html");
     return doc.body.textContent;
@@ -44,41 +39,29 @@ function GeneralQuestion() {
 
   const shuffleAnswers = (question) => {
     const shuffledAnswers = [
-      ...question.incorrect_answers,
-      question.correct_answer,
+      ...question.incorrectAnswers,
+      question.correctAnswer,
     ];
     return shuffledAnswers.sort(() => Math.random() - 0.5);
   };
-
-  const handleAnswerClick = (answer) => {
-    setSelectedAnswer(answer);
-    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-    setSelectedAnswer(null);
-
-    if (answer === questions[currentQuestionIndex].correct_answer) {
-      setCorrectAnswers((prevCount) => prevCount + 1);
-    }
-  };
-
   useEffect(() => {
     fetchingData();
   }, []);
 
-  if (questions.length === 0) {
+  if (obj.questions.length === 0) {
     return <div>Loading...</div>;
   }
 
-  const isQuizComplete = currentQuestionIndex === questions.length - 1;
+  const isQuizComplete = obj.currentQuestionIndex === obj.questions.length - 1;
 
-  const currentQuestion = questions[currentQuestionIndex];
+  const currentQuestion = obj.questions[obj.currentQuestionIndex];
   const shuffledAnswers = shuffleAnswers(currentQuestion);
-
   return (
     <>
       {isQuizComplete ? (
         <div>
           <h4>Quiz Complete!</h4>
-          <p>Correct Answers: {correctAnswers}</p>
+          <p>Correct Answers: {obj.correctAnswers}</p>
           <button>Back to menu</button>
           <button>Play again</button>
         </div>
@@ -88,7 +71,7 @@ function GeneralQuestion() {
           <ul>
             {shuffledAnswers.map((answer, index) => (
               <li key={index}>
-                <button onClick={() => handleAnswerClick(answer)}>
+                <button onClick={() => obj.handleAnswerClick(answer)}>
                   {decodeHtmlEntities(answer)}
                 </button>
               </li>
