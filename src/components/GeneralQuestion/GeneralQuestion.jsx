@@ -1,11 +1,13 @@
-import { useEffect } from "react";
 import "./GeneralQuestion.css";
 import { useParams } from "react-router-dom";
-import { useAnswerContext } from "../context/AnswerContext";
-import{ResultPage} from"../Result/ResultPage"
+import { ResultPage } from "../Result/ResultPage";
+import { useState, useEffect } from "react";
+import "./GeneralQuestion.css";
 
 function GeneralQuestion() {
-  const obj = useAnswerContext();
+  const [questions, setQuestions] = useState([]);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
   let { category } = useParams();
   const fetchingData = async () => {
     let url;
@@ -29,7 +31,7 @@ function GeneralQuestion() {
       const response = await fetch(url);
       const result = await response.json();
       console.log(result);
-      obj.setQuestions(
+      setQuestions(
         result.map((item) => {
           return {
             incorrect_answers: item.incorrectAnswers,
@@ -53,42 +55,40 @@ function GeneralQuestion() {
     ];
     return shuffledAnswers.sort(() => Math.random() - 0.5);
   };
-  // const resetQuiz = () => {
-  //   obj.setQuestions([]);
-  //   obj.setCurrentQuestionIndex(0);
-  //   obj.setCorrectAnswers(0);
-  // };
+
   useEffect(() => {
     fetchingData();
-  },[category]);
-  if (obj.questions.length === 0) {
+  }, []);
+  if (questions.length === 0) {
     return <div>Loading...</div>;
   }
-  const isQuizComplete = obj.currentQuestionIndex === obj.questions.length - 1;
-  const currentQuestion = obj.questions[obj.currentQuestionIndex];
+  const isQuizComplete = currentQuestionIndex === questions.length - 1;
+  const currentQuestion = questions[currentQuestionIndex];
   const shuffledAnswers = shuffleAnswers(currentQuestion);
-  const handleQuizCompletion = () => {
-    obj.resetQuiz(); 
+
+  const handleAnswerClick = (answer) => {
+    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+    if (answer === questions[currentQuestionIndex].correct_answer) {
+      setCorrectAnswers((prevCount) => prevCount + 1);
+    }
   };
+
   return (
     <>
       {isQuizComplete ? (
         <>
-        <ResultPage/>
- {/* { handleQuizCompletion()} */}
+          <ResultPage correctAnswers={correctAnswers} totalQuestion="10"/>
+          {/* { handleQuizCompletion()} */}
         </>
-       
       ) : (
         <div className="questionanswer">
           <div className="question">
-    {decodeHtmlEntities(currentQuestion.question)}
+            {decodeHtmlEntities(currentQuestion.question)}
           </div>
           <ul>
             {shuffledAnswers.map((answer, index) => (
-              <li key={index}
-          onClick={() => obj.handleAnswerClick(answer)}>
-                  {decodeHtmlEntities(answer)}
-               
+              <li key={index} onClick={() => handleAnswerClick(answer)}>
+                {decodeHtmlEntities(answer)}
               </li>
             ))}
           </ul>

@@ -180,6 +180,6 @@ li:hover::before {
   border: solid 7px  rgb(226, 233, 128);
 }
 li:hover{
-
+font-size: 22px;
   color: rgb(233, 254, 142);
 }
