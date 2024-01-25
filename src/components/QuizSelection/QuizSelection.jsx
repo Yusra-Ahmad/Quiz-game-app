@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./QuizSelection.css";
 import { useNavigate } from "react-router-dom";
 import {GiThink } from "react-icons/gi";

@@ -1,18 +1,13 @@
-// ResultPage.jsx
-import React, { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
 import "./ResultPage.css";
 import "./PartyPopper.css";
 import { NavLink, useParams } from "react-router-dom";
 import party2 from "../../assets/party2.gif";
-import { useAnswerContext } from "../context/AnswerContext";
 
-export const ResultPage = () => {
-  const obj = useAnswerContext();
+export const ResultPage = ({ correctAnswers, totalQuestion}) => {
   const { category } = useParams();
-  const percentage = (
-    (obj.correctAnswers / obj.questions.length) *
-    100
-  ).toFixed(2);
+  const percentage = ((correctAnswers / totalQuestion) * 100).toFixed(2);
 
   const [showPoppers, setShowPoppers] = useState(false);
   useEffect(() => {
@@ -22,7 +17,7 @@ export const ResultPage = () => {
   }, []);
 
   let resultMessage;
-  if (obj.correctAnswers >= 6) {
+  if (correctAnswers >= 6) {
     resultMessage = (
       <div>
         🎊<span className="congrats">Congratulations! </span>🎊 You did great!
@@ -58,10 +53,10 @@ export const ResultPage = () => {
           Category: <span>{category}</span>
         </p>
         <p>
-          Total Questions: <span>{obj.questions.length}</span>
+          Total Questions: <span>{totalQuestion}</span>
         </p>
         <p>
-          Correct Answers: <span>{obj.correctAnswers}</span>
+          Correct Answers: <span>{correctAnswers}</span>
         </p>
         <p>
           Percentage: <span>{percentage}%</span>
