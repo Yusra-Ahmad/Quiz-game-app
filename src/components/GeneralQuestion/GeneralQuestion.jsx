@@ -84,13 +84,13 @@ function GeneralQuestion() {
         </div>
       ) : (
         <div className="questionanswer">
-          <h3>{decodeHtmlEntities(currentQuestion.question)}</h3>
+          <div className="question">{decodeHtmlEntities(currentQuestion.question)}</div>
           <ul>
             {shuffledAnswers.map((answer, index) => (
-              <li key={index}>
-                <button onClick={() => handleAnswerClick(answer)}>
+              <li key={index} onClick={() => handleAnswerClick(answer)}>
+              
                   {decodeHtmlEntities(answer)}
-                </button>
+                
               </li>
             ))}
           </ul>
