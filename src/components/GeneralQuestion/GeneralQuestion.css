@@ -203,3 +203,6 @@ font-size: 22px;
   ul {
     margin-left: 18rem;}
 }
+.options{
+  cursor: pointer;
+}

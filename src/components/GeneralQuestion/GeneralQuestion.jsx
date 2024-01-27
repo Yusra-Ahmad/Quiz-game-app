@@ -90,7 +90,7 @@ function GeneralQuestion() {
           </div>
           <ul>
             {shuffledAnswers.map((answer, index) => (
-              <li key={index} onClick={() => handleAnswerClick(answer)}>
+              <li className="options" key={index} onClick={() => handleAnswerClick(answer)}>
                 {decodeHtmlEntities(answer)}
               </li>
             ))}
