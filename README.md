@@ -25,7 +25,7 @@ Dive into thought-provoking questions from different categories and challenge yo
 
 Access the deployed website instantly! No installation required. Click on the image below to open the website:
 
-[![Quiz Game App](quiz-app-img.png)](https://your-quiz-game-website.com)
+[![Quiz Game App](quiz-app-img.png)](https://quiz-game-umber.vercel.app/)
 
 ## Collaboration 👥
 
@@ -34,7 +34,7 @@ This Quiz Game App is a collaborative masterpiece! 🤝 A big shoutout to these 
 
 - [Sadhana Singh](https://github.com/SadhanaSingh007) 👤
 
-- [Yusra Amad](https://github.com/Yusra-Ahmad) 👤
+- [Yusra Ahmad](https://github.com/Yusra-Ahmad) 👤
 
 - [Vasylyna Sidei](https://github.com/VasylynaSidei) 👤
 
