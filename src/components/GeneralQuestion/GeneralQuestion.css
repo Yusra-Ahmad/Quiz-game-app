@@ -4,7 +4,7 @@
   display: flex;
   text-align: center;
   justify-content: space-between;
-  background: linear-gradient(90deg, hsl(304, 43%, 63%), #51c1c9, #d5e3c7, #6d66d0);
+  background: linear-gradient(90deg, hsl(304, 65%, 70%), #8bd9de, hsl(90, 39%, 71%), #918af1);
   width: 100rem; 
    padding: 2rem;
   transform-style: preserve-3d;
