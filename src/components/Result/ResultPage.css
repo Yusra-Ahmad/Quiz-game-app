@@ -10,8 +10,13 @@
 }
 .loss{
     font-family:'Abril Fatface' ;
-    color: rgba(0, 0, 0, 0.642);
-    font-size: 80px;
+    background:  linear-gradient(90deg, #e4d8eb, #c155de, #918cd9, #77f3da);
+    border-radius: 50px;
+    font-size: 70px;
+    color: rgb(7, 13, 13);
+    padding: 10px;
+    font-family:'Style Script' ;
+    letter-spacing: 4px;
 }
 
 .result-container{

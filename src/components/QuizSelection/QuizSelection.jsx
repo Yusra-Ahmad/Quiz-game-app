@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import {GiThink } from "react-icons/gi";
 import { FcAcceptDatabase } from "react-icons/fc";
 import { TbWorldHeart } from "react-icons/tb";
-import { FaLaptopCode } from "react-icons/fa";
+import { FcBiomass } from "react-icons/fc";
 import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
-import { FaFaceGrinStars } from "react-icons/fa6";
-
+import { FcMusic } from "react-icons/fc";
+import { FcFilmReel } from "react-icons/fc";
+import { FcFaq } from "react-icons/fc";
+import { FcBiotech } from "react-icons/fc";
 export const QuizSelection = () => {
   const navigate = useNavigate();
 
@@ -31,25 +33,29 @@ export const QuizSelection = () => {
           
           Quiz Selection  <FcAcceptDatabase  style={{fontSize:"5rem"}}/>
         </h2> 
-        <div style={{ fontSize: "30px" }}>
+        <div style={{ fontSize: "30px",    height: "450px",
+    padding: "16px" }}>
           <div
             className="category"
             onClick={()=>handleClick("general-knowledge")}
           >
-            General Knowledge <TbWorldHeart />
+            General Knowledge <FcFaq /><TbWorldHeart />
           </div>
           <div
             className="category"
             onClick={()=>handleClick("science-computers")}
           >
-            Science Computers <FaLaptopCode />
+            Science  <FcBiomass /><FcBiotech />
+
           </div>
           <div
             className="category"
             onClick={()=>handleClick("entertainment")}
           >
             Entertainment
-            <FaFaceGrinStars />
+
+           
+            <FcMusic /><FcFilmReel />
           </div>
         </div>
       </div>
