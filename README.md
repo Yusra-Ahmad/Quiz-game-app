@@ -10,8 +10,7 @@ Dive into thought-provoking questions from different categories and challenge yo
 
 - **General Knowledge** 🌍
 - **Science** 🧪
-- **Computers** 💻
-- **Cartoon and Animations** 🎨
+- **Entertainment** 🎨
 
 ## Play Rules 🎮
 
