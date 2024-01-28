@@ -4,6 +4,7 @@ import { ResultPage } from "../Result/ResultPage";
 import { useState, useEffect } from "react";
 import "./GeneralQuestion.css";
 
+
 function GeneralQuestion() {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -28,6 +29,7 @@ function GeneralQuestion() {
         default:
           break;
       }
+
       const response = await fetch(url);
       const result = await response.json();
       console.log(result);
@@ -82,12 +84,13 @@ function GeneralQuestion() {
         </>
       ) : (
         <div className="questionanswer">
+          <h3 style={{fontSize:"45px",margin:"10px"}}>{currentQuestionIndex+1}/10</h3>
           <div className="question">
             {decodeHtmlEntities(currentQuestion.question)}
           </div>
           <ul>
             {shuffledAnswers.map((answer, index) => (
-              <li key={index} onClick={() => handleAnswerClick(answer)}>
+              <li className="options" key={index} onClick={() => handleAnswerClick(answer)}>
                 {decodeHtmlEntities(answer)}
               </li>
             ))}
