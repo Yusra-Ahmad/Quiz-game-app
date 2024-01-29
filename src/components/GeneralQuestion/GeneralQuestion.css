@@ -5,13 +5,15 @@
   text-align: center;
   justify-content: space-between;
   background: transparent;
-  width: 100rem; 
-   padding: 2rem;
+  width: 100rem;
+  padding: 2rem;
   transform-style: preserve-3d;
   border-radius: 130px;
   color: white;
   border: solid rgb(5, 136, 197) 2px;
-  box-shadow: -12px 16px 10px 4px #215078, -3px 4px 28px 0 rgba(203, 106, 220, 0.01), 25px 25px 25px 0 rgba(7, 6, 30, 0.25);
+  box-shadow: -12px 16px 10px 4px #215078,
+    -3px 4px 28px 0 rgba(203, 106, 220, 0.01),
+    25px 25px 25px 0 rgba(7, 6, 30, 0.25);
 }
 .question {
   /* border-radius: 150px;
@@ -23,7 +25,7 @@
   font-family: "Playfair Display";
   font-size: 25px;
   transform: translateY(calc(var(--y, 0) * 1%)) scale(var(--scale));
-  transition: transform 0.1s;
+  transition: transform 0.1s ease-in-out;
 
   --y: -10;
   --scale: 1.1;
@@ -36,9 +38,9 @@
   inset: calc(var(--size-3) * -1);
   border: var(--size-2) solid var(--gray-0);
   transform: scale(var(--border-scale, 0));
-  transition: transform 0.125s;
+  transition: transform 0.125s ease-in-out;
   border-radius: 120px;
-  border: solid 8px  #4fe8db;
+  border: solid 8px #4fe8db;
 
   --angle-one: 105deg;
   --angle-two: 290deg;
@@ -60,22 +62,21 @@
   z-index: -1;
 }
 
-
 .question::after {
   margin-right: -61px;
-    margin-bottom: -45px;
-    content: "";
-    position: absolute;
-    inset: 12px;
-    border: var(--size-2) solid var(--gray-0);
-    transform: scale(var(--border-scale, 0));
-    transition: transform 0.125s;
-    border-radius: 120px;
-    border: solid black 8px;
-    --angle-one: 0deg;
-    --angle-two: 210deg;
-    --spread-one: 207deg;
-    --spread-two: 135deg;
+  margin-bottom: -45px;
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: var(--size-2) solid var(--gray-0);
+  transform: scale(var(--border-scale, 0));
+  transition: transform 0.125s ease-in-out;
+  border-radius: 120px;
+  border: solid black 8px;
+  --angle-one: 0deg;
+  --angle-two: 210deg;
+  --spread-one: 207deg;
+  --spread-two: 135deg;
   --start-one: calc(var(--angle-one) - (var(--spread-one) * 0.5));
   --start-two: calc(var(--angle-two) - (var(--spread-two) * 0.5));
   --end-one: calc(var(--angle-one) + (var(--spread-one) * 0.5));
@@ -99,13 +100,11 @@ ul {
   list-style: none;
   margin-left: 15rem;
   height: 40rem;
-  
 }
 
-
-ul>li{
+ul > li {
   transform: translateY(calc(var(--y, 0) * 1%)) scale(var(--scale));
-  transition: transform 0.1s;
+  transition: 0.16s ease-in-out;
 
   --y: -10;
   --scale: 1.1;
@@ -115,15 +114,15 @@ ul>li{
   padding: 10px;
 }
 
-ul>li::before {
+ul > li::before {
   content: "";
   position: absolute;
   inset: calc(var(--size-3) * -1);
   border: var(--size-2) solid var(--gray-0);
   transform: scale(var(--border-scale, 0));
-  transition: transform 0.125s;
+  transition: transform 0.125s ease-in-out;
   border-radius: 80px;
-  border: solid 5px  #85f7fd;
+  border: solid 5px #85f7fd;
 
   --angle-one: 105deg;
   --angle-two: 290deg;
@@ -145,21 +144,21 @@ ul>li::before {
   z-index: -1;
 }
 
-
-ul>li::after {    margin-right: -24px;
+ul > li::after {
+  margin-right: -24px;
   margin-bottom: -24px;
   content: "";
   position: absolute;
   inset: -5px;
-    border: var(--size-2) solid var(--gray-0);
-    transform: scale(var(--border-scale, 0));
-    transition: transform 0.125s;
-    border-radius: 80px;
-    border: 5px solid black;
-    --angle-one: 111deg;
-    --angle-two: 12deg;
-    --spread-one: 337deg;
-    --spread-two: 543deg;
+  border: var(--size-2) solid var(--gray-0);
+  transform: scale(var(--border-scale, 0));
+  transition: transform 0.125s ease-in-out;
+  border-radius: 80px;
+  border: 5px solid black;
+  --angle-one: 111deg;
+  --angle-two: 12deg;
+  --spread-one: 337deg;
+  --spread-two: 543deg;
   --start-one: calc(var(--angle-one) - (var(--spread-one) * 0.5));
   --start-two: calc(var(--angle-two) - (var(--spread-two) * 0.5));
   --end-one: calc(var(--angle-one) + (var(--spread-one) * 0.5));
@@ -185,15 +184,15 @@ li > button {
   font-family: "Playfair Display";
 }
 li:hover::before {
-  border: solid 7px  rgb(210, 32, 193);
-}li:hover::after {
-  border: solid 7px  #fdee17;
+  border: solid 7px rgb(210, 32, 193);
 }
-li:hover{
-font-size: 22px;
+li:hover::after {
+  border: solid 7px #fdee17;
+}
+li:hover {
+  font-size: 22px;
   color: rgb(17, 2, 23);
   font-weight: bold;
-
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
@@ -203,8 +202,9 @@ font-size: 22px;
     width: 50rem;
   }
   ul {
-    margin-left: 18rem;}
+    margin-left: 18rem;
+  }
 }
-.options{
+.options {
   cursor: pointer;
 }
