@@ -47,7 +47,10 @@
   border: 5px solid rgb(216, 9, 185);
   background: linear-gradient(90deg, #72e3b4, #edb2d3, #f4eca2, #03a9f4);
   margin-top: 30px;
+
   transition: 0.35s ease-in-out;
+
+
 }
 
 .category:active {
@@ -96,7 +99,9 @@
 
   cursor: pointer;
   text-align: center;
+
   transition: background-color 0.35s ease-in-out;
+
 }
 
 .category:hover {
