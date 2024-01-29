@@ -4,7 +4,6 @@ import { ResultPage } from "../Result/ResultPage";
 import { useState, useEffect } from "react";
 import "./GeneralQuestion.css";
 
-
 function GeneralQuestion() {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -79,18 +78,23 @@ function GeneralQuestion() {
     <>
       {isQuizComplete ? (
         <>
-          <ResultPage correctAnswers={correctAnswers} totalQuestion="10"/>
-          {/* { handleQuizCompletion()} */}
+          <ResultPage correctAnswers={correctAnswers} totalQuestion="10" />
         </>
       ) : (
         <div className="questionanswer">
-          <h3 style={{fontSize:"45px",margin:"10px"}}>{currentQuestionIndex+1}/10</h3>
+          <h3 style={{ fontSize: "45px", margin: "10px" }}>
+            {currentQuestionIndex + 1}/10
+          </h3>
           <div className="question">
             {decodeHtmlEntities(currentQuestion.question)}
           </div>
           <ul>
             {shuffledAnswers.map((answer, index) => (
-              <li className="options" key={index} onClick={() => handleAnswerClick(answer)}>
+              <li
+                className="options"
+                key={index}
+                onClick={() => handleAnswerClick(answer)}
+              >
                 {decodeHtmlEntities(answer)}
               </li>
             ))}
