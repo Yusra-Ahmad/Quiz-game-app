@@ -55,12 +55,7 @@ color: rgb(245, 229, 229);
 }
 
 .result-items {
-    /* border-radius: 150px;
-    font-family: "Playfair Display";
-    border-width: 4px;
-    border-style: solid; */
-    /* border-image: linear-gradient(to right, rgb(131, 219, 246), rgb(110, 32, 149))1; */
-
+   
     margin: auto;
     padding: 20px 60px;
     transform: translateY(calc(var(--y, 0) * 1%)) scale(var(--scale));
