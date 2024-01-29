@@ -28,7 +28,7 @@
   border: 0;
   padding: var(--size-4) var(--size-8);
   transform: translateY(calc(var(--y, 0) * 1%)) scale(var(--scale));
-  transition: transform 0.1s;
+  transition: transform 0.5s;
   position: relative;
   cursor: pointer;
   border-radius: 34px;
@@ -47,6 +47,10 @@
   border: 5px solid rgb(216, 9, 185);
   background: linear-gradient(90deg, #72e3b4, #edb2d3, #f4eca2, #03a9f4);
   margin-top: 30px;
+
+  transition: 0.35s ease-in-out;
+
+
 }
 
 .category:active {
@@ -54,6 +58,7 @@
   --scale: 0.9;
   --border-scale: 0.9, 0.8;
   background-color: rgb(207, 189, 199);
+  transition: 0.35s ease-in-out;
 }
 
 .category:before {
@@ -94,7 +99,9 @@
 
   cursor: pointer;
   text-align: center;
-  transition: background-color 0.4s ease;
+
+  transition: background-color 0.35s ease-in-out;
+
 }
 
 .category:hover {

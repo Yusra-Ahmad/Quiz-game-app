@@ -10,7 +10,10 @@
   transform-style: preserve-3d;
   border-radius: 130px;
   color: white;
+
+
   border: solid rgb(42, 170, 229) 2px;
+
   box-shadow: -12px 16px 10px 4px #215078,
     -3px 4px 28px 0 rgba(203, 106, 220, 0.01),
     25px 25px 25px 0 rgba(7, 6, 30, 0.25);
@@ -21,7 +24,7 @@
   font-family: "Playfair Display";
   font-size: 25px;
   transform: translateY(calc(var(--y, 0) * 1%)) scale(var(--scale));
-  transition: transform 0.1s;
+  transition: transform 0.1s ease-in-out;
 
   --y: -10;
   --scale: 1.1;
@@ -34,7 +37,7 @@
   inset: calc(var(--size-3) * -1);
   border: var(--size-2) solid var(--gray-0);
   transform: scale(var(--border-scale, 0));
-  transition: transform 0.125s;
+  transition: transform 0.125s ease-in-out;
   border-radius: 120px;
   border: solid 8px #4fe8db;
 
@@ -66,7 +69,10 @@
   inset: 12px;
   border: var(--size-2) solid var(--gray-0);
   transform: scale(var(--border-scale, 0));
-  transition: transform 0.125s;
+
+  transition: transform 0.125s ease-in-out;
+
+
   border-radius: 120px;
   border: solid black 8px;
   --angle-one: 0deg;
@@ -100,7 +106,7 @@ ul {
 
 ul > li {
   transform: translateY(calc(var(--y, 0) * 1%)) scale(var(--scale));
-  transition: transform 0.1s;
+  transition: 0.16s ease-in-out;
 
   --y: -10;
   --scale: 1.1;
@@ -116,7 +122,7 @@ ul > li::before {
   inset: calc(var(--size-3) * -1);
   border: var(--size-2) solid var(--gray-0);
   transform: scale(var(--border-scale, 0));
-  transition: transform 0.125s;
+  transition: transform 0.125s ease-in-out;
   border-radius: 80px;
   border: solid 5px #85f7fd;
 
@@ -148,7 +154,9 @@ ul > li::after {
   inset: -5px;
   border: var(--size-2) solid var(--gray-0);
   transform: scale(var(--border-scale, 0));
-  transition: transform 0.125s;
+
+  transition: transform 0.125s ease-in-out;
+
   border-radius: 80px;
   border: 5px solid black;
   --angle-one: 111deg;
@@ -181,10 +189,12 @@ li > button {
 }
 li:hover::before {
   border: solid 7px rgb(210, 32, 193);
+
 }
 li:hover::after {
   border: solid 7px #fdee17;
 }
+
 li:hover {
   font-size: 22px;
   color: rgb(17, 2, 23);
