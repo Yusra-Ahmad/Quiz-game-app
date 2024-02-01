@@ -33,12 +33,10 @@ export const ResultPage = ({ correctAnswers, totalQuestion}) => {
 
   return (
     <div className="result-container">
-      {/* <button >Click me for party!</button> */}
+   
       {showPoppers && (
         <div className="party-poppers-container">
-          {/* <div className="party-pop">
-            <img src={partypopper} alt="Party Popper 1" />
-          </div> */}
+    
           <div className="party-pop">
             <img src={party2} alt="Party Popper 2" />
           </div>

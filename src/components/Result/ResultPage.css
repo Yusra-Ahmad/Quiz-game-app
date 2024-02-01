@@ -189,3 +189,54 @@ color: rgb(245, 229, 229);
   .mainpage:active {
     background: linear-gradient(32deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
   }
+
+
+
+
+/* Media Query for Mobile Devices */
+@media only screen and (max-width: 1000px) {
+  .result-container {
+   width: 90vw;
+  height: 80vh;
+  }
+
+  .resulth2 {
+    font-size: 40px; /* Reduce font size */
+    margin-bottom: 10px; /* Adjust spacing */
+  }
+.congrats{
+  font-size: 22px;
+}
+.loss{
+  font-size: 22px;
+}
+  .result-message {
+    font-size: 24px; /* Reduce font size */
+    margin: 10px 0; /* Adjust spacing */
+  }
+.result-items{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 2rem;
+  width: 24vw;
+  height: 24vh;
+}
+  .result-items>p {
+    font-size: 18px; /* Reduce font size */
+text-align: center;
+justify-content: center;
+  }
+
+  .result-items>p>span {
+    font-size: 16px; /* Reduce font size */
+  }
+
+  .mainpage {
+    position: static;
+    margin-top: 10px; 
+  
+  font-size: 16px;
+  }
+}
